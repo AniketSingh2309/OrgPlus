@@ -1,0 +1,49 @@
+{
+  "kind": "admin#reports#activities",
+  "items": [
+    {
+      "id": {"time": "2026-10-19T10:15:00.000Z", "uniqueQualifier": "900", "applicationName": "drive"},
+      "actor": {"email": "priya.sharma@example.com", "profileId": "103456789012345678901"},
+      "events": [
+        {
+          "type": "acl_change",
+          "name": "change_user_access",
+          "parameters": [
+            {"name": "doc_id", "value": "1AbCdEf"},
+            {"name": "doc_title", "value": "Q3 Roadmap"},
+            {"name": "doc_type", "value": "document"},
+            {"name": "visibility", "value": "shared_externally"},
+            {"name": "target_user", "value": "partner@acme.io"},
+            {"name": "primary_event", "boolValue": true}
+          ]
+        },
+        {
+          "type": "access",
+          "name": "edit",
+          "parameters": [
+            {"name": "doc_id", "value": "1AbCdEf"},
+            {"name": "doc_title", "value": "Q3 Roadmap"},
+            {"name": "visibility", "value": "private"},
+            {"name": "originating_app_id", "intValue": "123"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": {"time": "2026-10-19T11:00:00.000Z", "uniqueQualifier": "901", "applicationName": "drive"},
+      "actor": {"email": "priya.sharma@example.com"},
+      "events": [
+        {
+          "type": "acl_change",
+          "name": "change_user_access",
+          "parameters": [
+            {"name": "doc_id", "value": "2XyZ"},
+            {"name": "target_user", "value": "colleague@example.com"},
+            {"name": "old_value", "multiValue": ["none"]},
+            {"name": "new_value", "multiValue": ["can_edit"]}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[Unit]
+Description=Org+ API (FastAPI + live updates)
+After=network-online.target postgresql.service orgplus-worker.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+User=orgplus
+Group=orgplus
+WorkingDirectory=/opt/orgplus/backend
+EnvironmentFile=/opt/orgplus/.env
+# Localhost only: Caddy forwards /socket.io here; the web app calls the rest internally.
+# One process: the live-update relay and rate limits live in memory.
+ExecStart=/opt/orgplus/backend/.venv/bin/uvicorn orgpulse.api.main:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=always
+RestartSec=3
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/orgplus/data /opt/orgplus/backend
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

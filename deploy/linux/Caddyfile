@@ -1,0 +1,23 @@
+# Org+ behind Caddy: free automatic HTTPS (Let's Encrypt) for {$DOMAIN}.
+# setup.sh fills in the domain and installs this as /etc/caddy/Caddyfile.
+{$DOMAIN} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+
+	# Live updates (Socket.IO, websockets) go straight to the API...
+	handle /socket.io/* {
+		reverse_proxy 127.0.0.1:8000
+	}
+	# ...everything else to the web app, which calls the API itself on localhost.
+	handle {
+		reverse_proxy 127.0.0.1:3000
+	}
+}

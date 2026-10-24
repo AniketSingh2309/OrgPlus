@@ -1,0 +1,31 @@
+[Unit]
+Description=Org+ worker (Google sync, database setup and migrations)
+After=network-online.target postgresql.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+User=orgplus
+Group=orgplus
+WorkingDirectory=/opt/orgplus/backend
+EnvironmentFile=/opt/orgplus/.env
+# Only the worker gets the provisioning role: it creates each new organisation's
+# database and migrates every organisation on start. Never put this in .env.
+Environment=ADMIN_DATABASE_URL=postgresql://orgplus_admin@localhost:5432/postgres
+ExecStart=/opt/orgplus/backend/.venv/bin/python -m orgpulse.worker
+Restart=always
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/orgplus/data /opt/orgplus/backend
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

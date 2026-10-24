@@ -1,0 +1,42 @@
+{
+  "name": "orgpulse-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0 -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "jose": "^5.9.6",
+    "lucide-react": "^0.454.0",
+    "next": "14.2.15",
+    "next-auth": "^4.24.10",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-simple-maps": "^3.0.0",
+    "recharts": "^2.13.3",
+    "socket.io-client": "^4.8.1",
+    "swr": "^2.2.5",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.1",
+    "@types/node": "20.16.11",
+    "@types/react": "18.3.11",
+    "@types/react-dom": "18.3.1",
+    "@types/react-simple-maps": "^3.0.6",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "10.4.20",
+    "jsdom": "^25.0.1",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "vitest": "^2.1.4"
+  }
+}

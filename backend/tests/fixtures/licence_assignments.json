@@ -1,0 +1,11 @@
+{
+  "kind": "licensing#licenseAssignmentList",
+  "items": [
+    {"productId": "Google-Apps", "skuId": "1010020028", "userId": "a@example.com", "skuName": "Google Workspace Business Standard"},
+    {"productId": "Google-Apps", "skuId": "1010020028", "userId": "b@example.com", "skuName": "Google Workspace Business Standard"},
+    {"productId": "Google-Apps", "skuId": "1010020028", "userId": "c@example.com", "skuName": "Google Workspace Business Standard"},
+    {"productId": "Google-Apps", "skuId": "1010020025", "userId": "d@example.com", "skuName": "Google Workspace Business Plus"},
+    {"productId": "Google-Apps", "skuId": "1010020027", "userId": "e@example.com", "skuName": "Google Workspace Business Starter"},
+    {"productId": "Google-Apps", "skuId": "9999999999", "userId": "f@example.com", "skuName": "Some Future SKU"}
+  ]
+}

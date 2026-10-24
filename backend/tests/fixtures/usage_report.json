@@ -1,0 +1,32 @@
+{
+  "kind": "admin#reports#usageReports",
+  "warnings": [{"code": "PARTIAL_DATA_AVAILABLE", "message": "Data for some apps is not available yet"}],
+  "usageReports": [
+    {
+      "kind": "admin#reports#usageReport",
+      "date": "2026-10-17",
+      "entity": {"type": "USER", "customerId": "C01abc", "userEmail": "Priya.Sharma@example.com", "profileId": "103456789012345678901"},
+      "parameters": [
+        {"name": "accounts:used_quota_in_mb", "intValue": "2048"},
+        {"name": "accounts:total_quota_in_mb", "intValue": "30720"},
+        {"name": "drive:num_items_created", "intValue": "3"},
+        {"name": "drive:num_items_edited", "intValue": "12"},
+        {"name": "drive:num_items_viewed", "intValue": "40"},
+        {"name": "gmail:num_emails_sent", "intValue": "9"},
+        {"name": "gmail:num_emails_received", "intValue": "55"},
+        {"name": "meet:num_calls", "intValue": "4"},
+        {"name": "meet:total_call_minutes", "intValue": "150"},
+        {"name": "chat:num_messages_sent", "intValue": "20"},
+        {"name": "calendar:num_meetings_organized", "intValue": "2"},
+        {"name": "accounts:is_2sv_enrolled", "boolValue": true},
+        {"name": "accounts:last_login_time", "datetimeValue": "2026-10-17T08:00:00.000Z"}
+      ]
+    },
+    {
+      "kind": "admin#reports#usageReport",
+      "date": "2026-10-17",
+      "entity": {"type": "USER", "userEmail": "no.profile@example.com"},
+      "parameters": [{"name": "drive:num_items_created", "intValue": "1"}]
+    }
+  ]
+}

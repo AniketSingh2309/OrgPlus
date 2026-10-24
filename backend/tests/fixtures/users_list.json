@@ -1,0 +1,41 @@
+{
+  "kind": "admin#directory#users",
+  "users": [
+    {
+      "kind": "admin#directory#user",
+      "id": "103456789012345678901",
+      "primaryEmail": "Priya.Sharma@example.com",
+      "name": {"givenName": "Priya", "familyName": "Sharma", "fullName": "Priya Sharma"},
+      "isAdmin": true,
+      "isDelegatedAdmin": false,
+      "lastLoginTime": "2026-10-19T08:12:45.000Z",
+      "creationTime": "2023-02-01T10:00:00.000Z",
+      "suspended": false,
+      "archived": false,
+      "isEnrolledIn2Sv": true,
+      "isEnforcedIn2Sv": false,
+      "orgUnitPath": "/Engineering",
+      "aliases": ["priya@example.com"],
+      "organizations": [
+        {"title": "Intern", "department": "Old Dept", "primary": false},
+        {"title": "Engineering Manager", "department": "Engineering", "primary": true}
+      ],
+      "relations": [{"value": "CTO@example.com", "type": "manager"}],
+      "thumbnailPhotoUrl": "https://lh3.googleusercontent.com/a/photo"
+    },
+    {
+      "kind": "admin#directory#user",
+      "id": "103456789012345678902",
+      "primaryEmail": "new.joiner@example.com",
+      "name": {"givenName": "New", "familyName": "Joiner", "fullName": "New Joiner"},
+      "isAdmin": false,
+      "lastLoginTime": "1970-01-01T00:00:00.000Z",
+      "creationTime": "2026-10-15T09:00:00.000Z",
+      "suspended": true,
+      "suspensionReason": "ADMIN",
+      "isEnrolledIn2Sv": false,
+      "orgUnitPath": "/"
+    }
+  ],
+  "nextPageToken": "abc"
+}

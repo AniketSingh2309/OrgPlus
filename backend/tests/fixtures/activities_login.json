@@ -1,0 +1,33 @@
+{
+  "kind": "admin#reports#activities",
+  "items": [
+    {
+      "kind": "admin#reports#activity",
+      "id": {"time": "2026-10-20T04:30:12.000Z", "uniqueQualifier": "-7012345678901234567", "applicationName": "login", "customerId": "C01abc"},
+      "actor": {"email": "Priya.Sharma@example.com", "profileId": "103456789012345678901", "callerType": "USER"},
+      "ipAddress": "49.36.10.20",
+      "networkInfo": {"regionCode": "IN", "subdivisionCode": "IN-KA", "ipAsn": [55836]},
+      "events": [
+        {
+          "type": "login",
+          "name": "login_success",
+          "parameters": [
+            {"name": "login_type", "value": "google_password"},
+            {"name": "login_challenge_method", "multiValue": ["password", "google_authenticator"]},
+            {"name": "is_suspicious", "boolValue": false}
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "admin#reports#activity",
+      "id": {"time": "2026-10-20T05:00:00.000Z", "uniqueQualifier": "42", "applicationName": "login"},
+      "actor": {"email": "priya.sharma@example.com", "profileId": "103456789012345678901"},
+      "ipAddress": "102.89.1.1",
+      "events": [
+        {"type": "login", "name": "login_failure", "parameters": [{"name": "login_failure_type", "value": "login_failure_invalid_password"}]},
+        {"type": "account_warning", "name": "suspicious_login", "parameters": [{"name": "is_suspicious", "boolValue": true}]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens as RGB triplets so Tailwind can apply alpha.
+   Light theme = blue brand, dark theme = teal brand.
+   Brand text/buttons clear 6:1 contrast; activity-grid ramps (grid-1..4) are
+   validated ordinal ramps per mode. Status colours never change with the theme. */
+:root {
+  color-scheme: light;
+  --bg: 246 247 246;
+  --surface: 252 252 251;
+  --surface-2: 240 241 239;
+  --border: 226 228 225;
+  --text: 15 23 22;
+  --text-2: 71 85 84;
+  --text-3: 113 125 124;
+  --brand: 28 92 171; /* #1c5cab */
+  --brand-strong: 24 79 149; /* #184f95 */
+  --brand-soft: 219 232 251; /* #dbe8fb */
+  --on-brand: 255 255 255;
+  --grid-0: 234 235 232;
+  --grid-1: 134 182 239; /* #86b6ef */
+  --grid-2: 57 135 229; /* #3987e5 */
+  --grid-3: 28 92 171; /* #1c5cab */
+  --grid-4: 13 54 107; /* #0d366b */
+  --good: 12 163 12;
+  --warning: 250 178 25;
+  --serious: 236 131 90;
+  --critical: 208 59 59;
+  --s1: 42 120 214;
+  --s2: 235 104 52;
+  --s3: 27 175 122;
+  --s4: 237 161 0;
+  --s5: 232 123 164;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: 17 19 19;
+  --surface: 26 26 25;
+  --surface-2: 36 38 37;
+  --border: 52 56 55;
+  --text: 236 240 239;
+  --text-2: 190 199 197;
+  --text-3: 140 151 149;
+  --brand: 45 196 170;
+  --brand-strong: 94 220 196;
+  --brand-soft: 20 62 56;
+  --on-brand: 8 30 27;
+  --grid-0: 42 45 44;
+  --grid-1: 28 110 97;
+  --grid-2: 42 148 131;
+  --grid-3: 69 187 163;
+  --grid-4: 138 230 211;
+  --s1: 57 135 229;
+  --s2: 217 89 38;
+  --s3: 25 158 112;
+  --s4: 201 133 0;
+  --s5: 213 81 129;
+}
+
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-full { margin: 0 !important; padding: 0 !important; }
+}

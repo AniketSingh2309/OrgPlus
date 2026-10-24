@@ -1,0 +1,15 @@
+{
+  "kind": "admin#directory#tokenList",
+  "items": [
+    {"clientId": "slack.apps.googleusercontent.com", "displayText": "Slack", "anonymous": false, "nativeApp": false,
+     "scopes": ["https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/userinfo.email"]},
+    {"clientId": "pdf.apps.googleusercontent.com", "displayText": "PDF Merger", "anonymous": false, "nativeApp": false,
+     "scopes": ["https://www.googleapis.com/auth/drive"]},
+    {"clientId": "tracker.apps.googleusercontent.com", "displayText": "Mail Tracker", "anonymous": false,
+     "scopes": ["https://mail.google.com"]},
+    {"clientId": "cal.apps.googleusercontent.com", "displayText": "Calendly", "anonymous": false,
+     "scopes": ["https://www.googleapis.com/auth/calendar/"]},
+    {"clientId": "shady", "displayText": "Unknown app", "anonymous": true,
+     "scopes": ["https://www.googleapis.com/auth/userinfo.email"]}
+  ]
+}

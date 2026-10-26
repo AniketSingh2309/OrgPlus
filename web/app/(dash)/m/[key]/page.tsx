@@ -1,5 +1,7 @@
 "use client";
 
+import { useParams } from "next/navigation";
+import type { JSX } from "react";
 import { TrendChart } from "@/components/charts";
 import { Feature, LockedCard, useCapabilities } from "@/components/feature";
 import { BarList, Card, CardSkeleton, Chip, DataTable, Empty, ErrorState, Kpi, PageHeader, PageSkeleton, PersonLink } from "@/components/ui";
@@ -295,7 +297,8 @@ const VIEWS: Record<string, () => JSX.Element> = {
   classroom: Classroom,
 };
 
-export default function ModulePage({ params }: { params: { key: string } }) {
+export default function ModulePage() {
+  const params = useParams<{ key: string }>();
   const { caps } = useCapabilities();
   if (!caps) return <PageSkeleton />;
   const feature = caps.features[params.key];

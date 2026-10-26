@@ -2,6 +2,7 @@
 
 import { ArrowLeft, Flame, Mail, ShieldAlert, ShieldCheck, Trophy } from "lucide-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import { ActivityGrid } from "@/components/activity-grid";
 import { Bars } from "@/components/charts";
@@ -382,7 +383,8 @@ function AppsTab({ id }: { id: string }) {
   );
 }
 
-export default function PersonPage({ params }: { params: { id: string } }) {
+export default function PersonPage() {
+  const params = useParams<{ id: string }>();
   const { data: p, error, mutate } = useApi<Profile>(`/people/${params.id}`);
   const [tab, setTab] = useState<TabId>("overview");
 

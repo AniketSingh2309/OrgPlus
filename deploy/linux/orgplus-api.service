@@ -11,7 +11,7 @@ WorkingDirectory=/opt/orgplus/backend
 EnvironmentFile=/opt/orgplus/.env
 # Localhost only: Caddy forwards /socket.io here; the web app calls the rest internally.
 # One process: the live-update relay and rate limits live in memory.
-ExecStart=/opt/orgplus/backend/.venv/bin/uvicorn orgpulse.api.main:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips 127.0.0.1
+ExecStart=/opt/orgplus/backend/.venv/bin/uvicorn orgpulse.api.main:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips 127.0.0.1 --no-server-header
 Restart=always
 RestartSec=3
 

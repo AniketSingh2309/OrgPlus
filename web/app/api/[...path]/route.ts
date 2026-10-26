@@ -6,7 +6,8 @@ export const dynamic = "force-dynamic";
 const API = process.env.API_INTERNAL_URL ?? "http://localhost:8000";
 const PASS_HEADERS = ["content-type", "content-disposition"];
 
-async function proxy(req: NextRequest, { params }: { params: { path: string[] } }) {
+async function proxy(req: NextRequest, ctx: { params: Promise<{ path: string[] }> }) {
+  const params = await ctx.params;
   // Account endpoints (sign-up, authenticator setup, password links) are public;
   // everything else needs a session. Sign-in itself only goes through NextAuth.
   const isPublic = params.path[0] === "account" && req.method === "POST" && params.path[1] !== "login";

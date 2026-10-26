@@ -2,8 +2,9 @@
 
 import { Minus, Plus, RotateCcw } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import type { GeoJsonObject } from "geojson";
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
-import world from "world-atlas/countries-110m.json";
+import worldTopology from "world-atlas/countries-110m.json";
 import { usePalette } from "@/components/charts";
 import { BarList, Card, Chip, DataTable, Empty, ErrorState, PageHeader, PageSkeleton } from "@/components/ui";
 import { useApi } from "@/lib/api";
@@ -15,6 +16,9 @@ type Data = {
   new_locations: { user: string; country: string; first_seen: string }[];
   geoip: boolean;
 };
+
+// TopoJSON: react-simple-maps reads it at runtime, though its types only list GeoJSON.
+const world = worldTopology as unknown as GeoJsonObject;
 
 type Point = Data["points"][number];
 type View = { center: [number, number]; zoom: number };
@@ -88,7 +92,8 @@ export default function MapPage() {
                   zoom={view.zoom}
                   minZoom={1}
                   maxZoom={16}
-                  onMoveEnd={({ coordinates, zoom }: { coordinates: [number, number]; zoom: number }) => {
+                  onMoveEnd={({ coordinates, zoom }) => {
+                    if (!coordinates || zoom === undefined) return;
                     if (coordinates[0] !== view.center[0] || coordinates[1] !== view.center[1] || zoom !== view.zoom) {
                       setUserMoved(true);
                       setView({ center: coordinates, zoom });
@@ -98,7 +103,7 @@ export default function MapPage() {
                   <Geographies geography={world}>
                     {({ geographies }) =>
                       geographies.map((geo) => (
-                        <Geography key={geo.rsmKey} geography={geo} fill={p["--border"]} stroke={p["--surface"]} strokeWidth={0.5 / view.zoom} style={{ default: { outline: "none" }, hover: { outline: "none" }, pressed: { outline: "none" } }} />
+                        <Geography key={geo.rsmKey} geography={geo} fill={p["--border"]} stroke={p["--surface"]} strokeWidth={0.5 / view.zoom} style={{ outline: "none" }} />
                       ))
                     }
                   </Geographies>

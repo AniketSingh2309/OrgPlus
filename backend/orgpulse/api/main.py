@@ -42,7 +42,31 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
         yield
 
 
-api = FastAPI(title="Org+ API", version="1.0.0", lifespan=lifespan)
+api = FastAPI(
+    title="Org+ API",
+    version="1.0.0",
+    lifespan=lifespan,
+    # No public API docs: the API is only meant for the Org+ web app.
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
+)
+
+_SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "no-referrer",
+    "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
+    "Cache-Control": "no-store",  # dashboards hold personal data: never cache responses
+}
+
+
+@api.middleware("http")
+async def security_headers(request: Request, call_next: Any) -> Response:
+    response = cast(Response, await call_next(request))
+    for name, value in _SECURITY_HEADERS.items():
+        response.headers.setdefault(name, value)
+    return response
 
 
 @api.middleware("http")

@@ -29,5 +29,6 @@ export async function viewer(req: NextRequest): Promise<Who | null> {
 
 /** The browser's IP, passed to the API for its sign-up / password-link rate limits. */
 export function clientIp(req: NextRequest): string {
-  return (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || (req.ip ?? "");
+  // Next 15 has no req.ip: the proxy in front (Caddy / nginx) sets X-Forwarded-For.
+  return (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || (req.headers.get("x-real-ip") ?? "");
 }
